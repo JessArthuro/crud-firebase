@@ -1,0 +1,83 @@
+<h1>Heroe <small class="text-secondary fw-normal">nombre del heroe</small></h1>
+<hr />
+
+<div class="row">
+  <div class="col text-end">
+    <button class="btn btn-danger" routerLink="/heroes">
+      <i class="fas fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+<form class="row g-3" (ngSubmit)="guardar(form)" #form="ngForm">
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Firebase ID</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputAddress"
+      placeholder="Firebase ID"
+      disabled
+      name="id"
+      [(ngModel)]="hero.id"
+    />
+    <small class="text-secondary">Este campo es autogenerado</small>
+  </div>
+  <div class="col-12">
+    <label for="inputName" class="form-label">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputName"
+      placeholder="Nombre del heroe..."
+      required
+      name="nombre"
+      [(ngModel)]="hero.nombre"
+    />
+  </div>
+  <div class="col-12">
+    <label for="inputPower" class="form-label">Poder</label>
+    <input
+      type="text"
+      class="form-control"
+      id="inputPower"
+      placeholder="Ejemplo: superfuerza, vision laser, etc..."
+      name="poder"
+      [(ngModel)]="hero.poder"
+    />
+  </div>
+  <div class="col-12">
+    <label class="form-label">Estado</label>
+
+    <div class="row">
+      <div class="col">
+        <button
+          *ngIf="hero.vivo"
+          (click)="hero.vivo = false"
+          class="btn btn-outline-success"
+          type="button"
+        >
+          <i class="fas fa-smile"></i> Vivo
+        </button>
+        <button
+          *ngIf="!hero.vivo"
+          (click)="hero.vivo = true"
+          class="btn btn-outline-danger"
+          type="button"
+        >
+          <i class="fas fa-skull"></i> Muerto
+        </button>
+      </div>
+      <small class="text-secondary"
+        >Presiona para alternar entre los valores vivo o muerto</small
+      >
+    </div>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-save"></i> Guardar
+    </button>
+  </div>
+</form>
